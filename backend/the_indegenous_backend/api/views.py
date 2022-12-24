@@ -84,7 +84,7 @@ def search(request):
     # for bookTitle in comp:
     #     bookObj = BookSerializer(Book.objects.get(title=bookTitle)).data
     #     searchResults.append(bookObj)
-    
+     
     # response.data={
     #     "suggestions":searchResults
     # }

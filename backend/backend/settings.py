@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-cn)99qrkgcut-nsx*4$43gbq68rj4-a-^1_)t4_jwv)x1z5i#=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['142.93.218.227', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['142.93.218.227', 'localhost', '127.0.0.1', '*']
 # Application definition
 
 INSTALLED_APPS = [
@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
-
 
 
 MIDDLEWARE = [
@@ -81,10 +80,10 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'defaultdb', 
-        'USER': 'doadmin', 
+        'NAME': 'defaultdb',
+        'USER': 'doadmin',
         'PASSWORD': 'AVNS_RCeNg6wvaknnSmFUmDy',
-        'HOST': 'ebooks-pdf-database-do-user-12810010-0.b.db.ondigitalocean.com', 
+        'HOST': 'ebooks-pdf-database-do-user-12810010-0.b.db.ondigitalocean.com',
         'PORT': '25060',
     }
 }
@@ -109,10 +108,10 @@ AUTH_PASSWORD_VALIDATORS = []
 # ]
 
 
-
-#CORS setup
-CORS_ORIGIN_ALLOW_ALL = False
-CORS_ORIGIN_WHITELIST = [ 'http://localhost:3000','http://142.93.218.227:3000',"http://142.93.218.227:3001"]
+# CORS setup
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ORIGIN_WHITELIST = ['http://localhost:3000',
+                         'http://142.93.218.227:3000', "http://142.93.218.227:3001"]
 
 CORS_ALLOW_CREDENTIALS = False
 
@@ -139,5 +138,5 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-MEDIA_ROOT  = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 AUTH_USER_MODEL = 'users.User'

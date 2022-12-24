@@ -6,9 +6,7 @@ import "react-pdf/dist/esm/Page/AnnotationLayer.css";
 import "./Sample.css";
 
 pdfjs.GlobalWorkerOptions.workerSrc = 'pdf.worker.min.js';
-
-
-  // pdfjs.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
+pdfjs.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
   
 
  function  Sample (props){
@@ -39,7 +37,7 @@ pdfjs.GlobalWorkerOptions.workerSrc = 'pdf.worker.min.js';
         </p>
       </nav>
 
-      <Document file={props.url}onLoadSuccess={onDocumentLoadSuccess}>
+      <Document file={props.url} onLoadSuccess={onDocumentLoadSuccess}>
         <div className="container" id="block_container" >
         <div>
 

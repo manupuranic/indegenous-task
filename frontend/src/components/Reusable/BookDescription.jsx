@@ -56,7 +56,7 @@ function BookDescription() {
                   backgroundSize: '100% 100%'}}>
 
             </div> */}
-              <Cover_pdf/>
+              <Cover_pdf url={readingbook.url} />
               {/* <Sample/>  */}
 
         {/* </div> */}

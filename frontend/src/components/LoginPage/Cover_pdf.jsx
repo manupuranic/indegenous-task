@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { Document, Page } from "react-pdf/dist/esm/entry.webpack";
-import { pdfjs } from 'react-pdf';
+import { pdfjs } from "react-pdf";
 
 import "react-pdf/dist/esm/Page/AnnotationLayer.css";
 import "./Sample.css";
 
-pdfjs.GlobalWorkerOptions.workerSrc = 'pdf.worker.min.js';
+pdfjs.GlobalWorkerOptions.workerSrc = "pdf.worker.min.js";
 pdfjs.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
-  
- function Cover_pdf (props){
+
+function Cover_pdf(props) {
   const [numPages, setNumPages] = useState(null);
   const [pageNumber, setPageNumber] = useState(1);
 
@@ -16,25 +16,23 @@ pdfjs.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pd
     setNumPages(numPages);
   };
 
-  const goToPrevPage = () => 
+  const goToPrevPage = () =>
     setPageNumber(pageNumber - 1 <= 1 ? 1 : pageNumber - 1);
 
   const goToNextPage = () =>
     setPageNumber(pageNumber + 1 >= numPages ? numPages : pageNumber + 1);
 
   return (
-    <div className="page"> 
-      
-
+    <div className="page">
       <Document file={props.url} onLoadSuccess={onDocumentLoadSuccess}>
-        <div className="container" id="block_container" >
-        <div >
-        <Page pageNumber={pageNumber} size={"A4"} height={500} />
-        </div>
+        <div className="container" id="block_container">
+          <div>
+            <Page pageNumber={pageNumber} size={"A4"} height={500} />
+          </div>
         </div>
       </Document>
     </div>
   );
-};
+}
 
 export default Cover_pdf;

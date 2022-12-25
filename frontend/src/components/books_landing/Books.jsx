@@ -46,7 +46,6 @@ function Books() {
       var count = 0;
       let newbooks = books.map((item) => {
         if (item.url) {
-          console.log("Books", item);
           var desc = window.ePub("item.url");
           desc.coverUrl().then((data) => {
             item.imageurl = data;

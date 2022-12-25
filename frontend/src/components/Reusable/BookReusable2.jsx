@@ -13,6 +13,7 @@ import { SortByAuthor } from "../sort/SortByAuthor";
 import LinesEllipsis from "react-lines-ellipsis";
 import { Document, Page, pdfjs } from "react-pdf";
 
+
 //This All_books function requests for All the book data and stores it in array named books
 let PageSize = 4;
 function BookReusable2({ books_props }) {
@@ -24,9 +25,43 @@ function BookReusable2({ books_props }) {
   const [pageNumber, setPageNumber] = useState(1);
   let navigate = useNavigate();
   let path = `/dashboard/reading1`;
+
+  // function downloadReport(idx) {
+  //   console.log(idx);
+  //   idx =
+  //     "https://archive.org/download/whitehousecookbo00gillrich/whitehousecookbo00gillrich.pdf";
+  //   // idx =
+  //   //   "https://booksdatabaseepub.nyc3.digitaloceanspaces.com/abiologicalsurve01sumn.pdf";
+  //   fetch(idx, {
+  //     method: "get",
+  //     mode: "no-cors",
+  //     headers: {
+  //       // "Content-Type": "application/json",
+  //       // Accept: "application/json",
+  //       // responseType: "arraybuffer",
+  //       "Access-Control-Allow-Origin": "*",
+  //       "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type Accept"
+  //     },
+  //     // body: JSON.stringify({ id: idx }),
+  //   })
+  //     // .then((res) => res.blob())
+  //     .then((blob) => {
+  //       // var file = window.URL.createObjectURL(blob);
+  //       debugger;
+  //       // window.location.assign(file);
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error:", error);
+  //     })
+  //     .then((response) => {
+  //       // console.log(response.blob());
+  //     });
+  // }
+
   useEffect(() => {
     if (books_props) {
       setBooks(books_props);
+      // downloadReport("");
     }
   }, [books_props]);
 
@@ -140,6 +175,11 @@ function BookReusable2({ books_props }) {
 
   function Items({ currentItems }) {
     pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
+    const options = {
+      cMapUrl: "cmaps/",
+      cMapPacked: true,
+      standardFontDataUrl: "standard_fonts/",
+    };
     return (
       <div
         className="books_container"
@@ -159,7 +199,8 @@ function BookReusable2({ books_props }) {
         }}>
         {currentItems &&
           currentItems.map((book, i) => {
-            console.log("book-url", book.url);
+            // let url = "https://cors-anywhere.herokuapp.com/" + book.url;
+            // console.log(url);
             return (
               <div
                 className="book_out"
@@ -241,8 +282,7 @@ function BookReusable2({ books_props }) {
 
                     {/* This section is all about description of book. Description of book gives us brief idea of what the book is all about and is also one of the main component of book which can either make reader read the book or not. */}
                   </div>
-                  <div
-                    className="book-image">
+                  <div className="book-image">
                     <Document
                       file={book.url}
                       options={{ workerSrc: "/pdf.worker.js" }}
